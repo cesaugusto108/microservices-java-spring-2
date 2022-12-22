@@ -1,0 +1,4 @@
+INSERT INTO TB_STUDENT (tb_student_id, student_name, student_age, student_cpf, student_registration) VALUES (1, 'Matilda Soares Mota', 19, '925.135.155-23', 202200078982);
+INSERT INTO TB_STUDENT (tb_student_id, student_name, student_age, student_cpf, student_registration) VALUES (2, 'Paulo Sérgio Miranda Silva', 21, '251.512.333-23', 202200035112);
+INSERT INTO TB_STUDENT (tb_student_id, student_name, student_age, student_cpf, student_registration) VALUES (3, 'Antonia Freire Santos Lima', 20, '023.512.531.23', 202200019815);
+INSERT INTO TB_STUDENT (tb_student_id, student_name, student_age, student_cpf, student_registration) VALUES (4, 'João Melo e Silva', 18, '321.521.555-83', 202200083231);
