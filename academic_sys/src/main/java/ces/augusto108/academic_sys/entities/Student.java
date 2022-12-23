@@ -41,6 +41,15 @@ public class Student implements Serializable {
     )
     private Set<Course> courses = new HashSet<>();
 
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "tb_student_aid",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "aid_id")
+    )
+    private Set<FinancialAid> financialAids = new HashSet<>();
+
     public Student() {
     }
 
@@ -76,6 +85,10 @@ public class Student implements Serializable {
         return courses;
     }
 
+    public Set<FinancialAid> getFinancialAids() {
+        return financialAids;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -98,6 +111,10 @@ public class Student implements Serializable {
 
     public void setCourses(Set<Course> courses) {
         this.courses = courses;
+    }
+
+    public void setFinancialAids(Set<FinancialAid> financialAids) {
+        this.financialAids = financialAids;
     }
 
     @Override
