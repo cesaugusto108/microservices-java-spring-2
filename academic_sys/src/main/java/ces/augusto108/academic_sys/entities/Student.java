@@ -1,4 +1,4 @@
-package ces.augusto108.academic_sys.model.entities;
+package ces.augusto108.academic_sys.entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
