@@ -2,6 +2,7 @@ package ces.augusto108.academic_sys.services;
 
 import ces.augusto108.academic_sys.entities.Student;
 import ces.augusto108.academic_sys.repositories.StudentRepository;
+import ces.augusto108.academic_sys.services.exceptions.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,8 @@ public class StudentService {
     }
 
     public Student findById(Integer id) {
-        return studentRepository.findById(id).orElseThrow();
+        return studentRepository.findById(id).orElseThrow(
+                () -> new NotFoundException("Id not found. Id: " + id + " - Type: " + Student.class.getName())
+        );
     }
 }
