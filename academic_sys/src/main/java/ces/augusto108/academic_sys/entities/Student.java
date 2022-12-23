@@ -3,7 +3,9 @@ package ces.augusto108.academic_sys.entities;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_student")
@@ -24,12 +26,20 @@ public class Student implements Serializable {
     private Integer age;
 
     @NotBlank
-    @Column(name = "student_cpf")
+    @Column(name = "student_cpf", unique = true)
     private String cpf;
 
     @NotBlank
-    @Column(name = "student_registration")
+    @Column(name = "student_registration", unique = true)
     private Long registration;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "tb_student_course",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    private Set<Course> courses = new HashSet<>();
 
     public Student() {
     }
@@ -62,6 +72,10 @@ public class Student implements Serializable {
         return registration;
     }
 
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -80,6 +94,10 @@ public class Student implements Serializable {
 
     public void setRegistration(Long registration) {
         this.registration = registration;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
     }
 
     @Override
