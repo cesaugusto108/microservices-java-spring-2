@@ -1,22 +1,12 @@
-package ces.augusto108.academic_sys.entities;
+package ces.augusto108.finaid_payment_sys.entities;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
-@Table(name = "tb_course")
 public class Course implements Serializable {
-    private static final long serialVersionUID = -1121887484441928881L;
+    private static final long serialVersionUID = -223513568005561653L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tb_course_id")
-        private Integer id;
-
-    @NotBlank
-    @Column(name = "course_name")
+    private Integer id;
     private String name;
 
     public Course() {

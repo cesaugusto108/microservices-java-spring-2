@@ -1,45 +1,68 @@
 package ces.augusto108.finaid_payment_sys.entities;
 
 import java.io.Serializable;
-import java.util.Objects;
+import java.util.HashSet;
+import java.util.Set;
 
 public class FinancialAidPayment implements Serializable {
     private static final long serialVersionUID = -5083454764501622210L;
 
-    private Integer id;
-    private Integer studentId;
-    private Double amount;
+    private String studentCpf;
+    private Long studentRegistration;
+    private String studentName;
+
+    private Integer numberOfCourses;
+    private Set<FinancialAid> financialAids = new HashSet<>();
+
+    private Double total;
+
 
     public FinancialAidPayment() {
     }
 
-    public FinancialAidPayment(Integer id, Integer studentId) {
-        this.id = id;
-        this.studentId = studentId;
+    public FinancialAidPayment(
+            String studentCpf,
+            Long studentRegistration,
+            String studentName,
+            Integer numberOfCourses,
+            Set<FinancialAid> financialAids) {
+        this.studentCpf = studentCpf;
+        this.studentRegistration = studentRegistration;
+        this.studentName = studentName;
+        this.numberOfCourses = numberOfCourses;
+        this.financialAids = financialAids;
     }
 
-    public Integer getId() {
-        return id;
+    public String getStudentCpf() {
+        return studentCpf;
     }
 
-    public Integer getStudentId() {
-        return studentId;
+    public Long getStudentRegistration() {
+        return studentRegistration;
     }
 
-    public Double getAmount() {
-        return amount;
+    public String getStudentName() {
+        return studentName;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        FinancialAidPayment that = (FinancialAidPayment) o;
-        return id.equals(that.id);
+    public Integer getNumberOfCourses() {
+        return numberOfCourses;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
+    public Set<FinancialAid> getFinancialAids() {
+        return financialAids;
+    }
+
+    public Double getTotal() {
+        double total = 0.0;
+        double x = 0.0;
+        for (FinancialAid financialAid : financialAids) {
+            if (financialAid.getType().equals("BOOKS")) x = financialAid.getAmount() * numberOfCourses;
+            else x = financialAid.getAmount();
+
+            total += x;
+        }
+
+        return total;
     }
 }

@@ -21,8 +21,8 @@ public class StudentController {
         return ResponseEntity.ok(studentService.findAll());
     }
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ResponseEntity<Student> findById(@RequestParam Integer id) {
+    @RequestMapping(value = "/list/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Student> findById(@PathVariable Integer id) {
         return ResponseEntity.ok(studentService.findById(id));
     }
 }
