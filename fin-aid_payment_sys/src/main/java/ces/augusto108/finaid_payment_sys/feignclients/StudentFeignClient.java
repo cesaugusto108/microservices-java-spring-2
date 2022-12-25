@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Component
-@FeignClient(name = "academic-sys", url = "localhost:8001", path = "/students")
+@FeignClient(name = "academic-sys", path = "/students")
 public interface StudentFeignClient {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     ResponseEntity<Student> findById(@RequestParam Integer id);
