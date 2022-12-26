@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ces.augusto108</groupId>
-	<artifactId>academic_sys</artifactId>
+	<artifactId>academic-sys</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>academic_sys</name>
 	<description>Student Academic Management</description>
@@ -52,6 +52,11 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 	</dependencies>
 
