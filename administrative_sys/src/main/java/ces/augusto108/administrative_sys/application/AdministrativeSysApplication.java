@@ -5,11 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EntityScan(basePackages = {"ces.augusto108.administrative_sys.entities"})
 @ComponentScan(basePackages = {"ces.augusto108.administrative_sys.*"})
-//@EnableJpaRepositories(basePackages = {"ces.augusto108.administrative_sys.repositories"})
+@EnableJpaRepositories(basePackages = {"ces.augusto108.administrative_sys.repositories"})
 @EnableEurekaClient
 public class AdministrativeSysApplication {
     public static void main(String[] args) {

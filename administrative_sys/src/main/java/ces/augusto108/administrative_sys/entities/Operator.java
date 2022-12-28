@@ -22,7 +22,7 @@ public class Operator implements Serializable {
     private String name;
 
     @NotBlank
-    @Column(name = "operator_email")
+    @Column(name = "operator_email", unique = true)
     private String email;
 
     @NotBlank

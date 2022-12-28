@@ -17,7 +17,7 @@ public class Role implements Serializable {
     private Integer id;
 
     @NotBlank
-    @Column(name = "role_description")
+    @Column(name = "role_description", unique = true)
     private String description;
 
     public Role() {
