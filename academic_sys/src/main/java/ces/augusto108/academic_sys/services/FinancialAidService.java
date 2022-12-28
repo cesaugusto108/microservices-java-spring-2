@@ -18,8 +18,11 @@ public class FinancialAidService {
     }
 
     public FinancialAid findById(Integer id) {
-        return financialAidRepository.findById(id).orElseThrow(
-                () -> new NotFoundException("Id not found. Id: " + id + " - Type: " + FinancialAid.class.getName())
-        );
+        return financialAidRepository.findById(id)
+                .orElseThrow(
+                        () -> new NotFoundException(
+                                "Id not found. Id: " + id + " - Type: " + FinancialAid.class.getName()
+                        )
+                );
     }
 }

@@ -18,8 +18,11 @@ public class CourseService {
     }
 
     public Course findById(Integer id) {
-        return courseRepository.findById(id).orElseThrow(
-                () -> new NotFoundException("Id not found. Id: " + id + " - Type: " + Course.class.getName())
-        );
+        return courseRepository.findById(id)
+                .orElseThrow(
+                        () -> new NotFoundException(
+                                "Id not found. Id: " + id + " - Type: " + Course.class.getName()
+                        )
+                );
     }
 }

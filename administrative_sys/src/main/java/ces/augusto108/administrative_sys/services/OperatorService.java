@@ -18,17 +18,20 @@ public class OperatorService {
     }
 
     public Operator findById(Integer id) {
-        return operatorRepository.findById(id).orElseThrow(
-                () -> new NotFoundException("Id not found. Id: " + id + " - Type: " + Operator.class.getName())
-        );
+        return operatorRepository.findById(id)
+                .orElseThrow(
+                        () -> new NotFoundException(
+                                "Id not found. Id: " + id + " - Type: " + Operator.class.getName()
+                        )
+                );
     }
 
     public Operator findByEmail(String email) {
-        return operatorRepository.findByEmail(email).orElseThrow(
-                () -> new NotFoundException(
-                        "Email address not found. Email: " + email + " - Type: " + Operator.class.getName()
-                )
-        );
+        return operatorRepository.findByEmail(email)
+                .orElseThrow(
+                        () -> new NotFoundException(
+                                "Email address not found. Email: " + email + " - Type: " + Operator.class.getName()
+                        )
+                );
     }
-
 }

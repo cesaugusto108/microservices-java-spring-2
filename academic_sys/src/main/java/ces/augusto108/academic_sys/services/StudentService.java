@@ -18,8 +18,11 @@ public class StudentService {
     }
 
     public Student findById(Integer id) {
-        return studentRepository.findById(id).orElseThrow(
-                () -> new NotFoundException("Id not found. Id: " + id + " - Type: " + Student.class.getName())
-        );
+        return studentRepository.findById(id)
+                .orElseThrow(
+                        () -> new NotFoundException(
+                                "Id not found. Id: " + id + " - Type: " + Student.class.getName()
+                        )
+                );
     }
 }
