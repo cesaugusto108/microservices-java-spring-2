@@ -2,7 +2,6 @@ package ces.augusto108.authentication_sys.services;
 
 import ces.augusto108.authentication_sys.entities.Operator;
 import ces.augusto108.authentication_sys.feignclients.OperatorFeignClient;
-import feign.FeignException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,21 +18,31 @@ public class OperatorService implements UserDetailsService {
     private OperatorFeignClient operatorFeignClient;
 
     public Operator findByEmail(String email) {
-        try {
-            Operator o = operatorFeignClient.findByEmail(email).getBody();
+        Operator o = operatorFeignClient.findByEmail(email).getBody();
 
-            LOGGER.info("Login credentials found: " + email);
+        if (o == null) {
+            LOGGER.error("Login details not found: " + email);
 
-            return o;
-        } catch (FeignException | UsernameNotFoundException e) {
-            LOGGER.info("Login details not found: " + email);
-
-            return null;
+            throw new IllegalArgumentException("Email address not found.");
         }
+
+        LOGGER.info("Login credentials found: " + email);
+
+        return o;
     }
 
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return findByEmail(s);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Operator o = operatorFeignClient.findByEmail(username).getBody();
+
+        if (o == null) {
+            LOGGER.error("Login details not found: " + username);
+
+            throw new UsernameNotFoundException("Email address not found.");
+        }
+
+        LOGGER.info("Login credentials found: " + username);
+
+        return o;
     }
 }

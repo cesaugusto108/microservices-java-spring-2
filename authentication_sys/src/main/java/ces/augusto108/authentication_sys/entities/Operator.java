@@ -11,8 +11,8 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Operator implements Serializable, UserDetails {
-    private static final long serialVersionUID = 172202783829611408L;
+public class Operator implements UserDetails, Serializable {
+    private static final long serialVersionUID = 8338222707332974650L;
 
     private Integer id;
     private String name;
@@ -41,6 +41,43 @@ public class Operator implements Serializable, UserDetails {
 
     public String getEmail() {
         return email;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles
+                .stream()
+                .map(role -> new SimpleGrantedAuthority(role.getDescription()))
+                .collect(Collectors.toList());
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     public Set<Role> getRoles() {
@@ -79,43 +116,5 @@ public class Operator implements Serializable, UserDetails {
     @Override
     public String toString() {
         return name + " (" + email + ")";
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles
-                .stream()
-                .map(role -> new SimpleGrantedAuthority(role.getDescription()))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
-    }
-
-    @Override
-    public String getUsername() {
-        return email;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
     }
 }

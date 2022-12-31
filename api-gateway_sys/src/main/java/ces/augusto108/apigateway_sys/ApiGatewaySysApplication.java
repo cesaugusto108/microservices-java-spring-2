@@ -1,4 +1,4 @@
-package ces.augusto108.apigateway_sys.application;
+package ces.augusto108.apigateway_sys;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
