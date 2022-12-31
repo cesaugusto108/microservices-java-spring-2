@@ -17,7 +17,12 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 
     private static final String[] PUBLIC_ROUTE = {"/auth/oauth/token"};
     private static final String[] OPERATOR_ROUTES = {"/academic/**", "/aid/**"};
-    private static final String[] ADMIN_ROUTES = {"/administrative/**"};
+    private static final String[] ADMIN_ROUTES = {
+            "/administrative/**",
+            "/actuator/**",
+            "/academic/actuator/**",
+            "/auth/actuator/**"
+    };
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {

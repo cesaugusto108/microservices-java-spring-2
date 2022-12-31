@@ -1,10 +1,10 @@
 INSERT
     INTO TB_OPERATOR (OPERATOR_EMAIL, OPERATOR_NAME, OPERATOR_PASSWORD)
-    VALUES ('gerson@email.com', 'Gerson', '$2a$10$x9yuYQ5LA9haNLlvsIoeFOm3A41zr.Sk1J/yplNHKePTZsl8M87/W');
+    VALUES ('gerson@email.com', 'Gerson', '$2a$10$biIQbuBAkv9e.rAjj1nCEeOJsmbXZQihe/VTbywCdyvFWeJf8WbNa');
 
 INSERT
     INTO TB_OPERATOR (OPERATOR_EMAIL, OPERATOR_NAME, OPERATOR_PASSWORD)
-    VALUES ('juliana@email.com', 'Juliana', '$2a$10$x9yuYQ5LA9haNLlvsIoeFOm3A41zr.Sk1J/yplNHKePTZsl8M87/W');
+    VALUES ('juliana@email.com', 'Juliana', '$2a$10$biIQbuBAkv9e.rAjj1nCEeOJsmbXZQihe/VTbywCdyvFWeJf8WbNa');
 
 INSERT INTO TB_ROLE (ROLE_DESCRIPTION) VALUES ('ROLE_OPERATOR');
 INSERT INTO TB_ROLE (ROLE_DESCRIPTION) VALUES ('ROLE_ADMIN');
