@@ -14,7 +14,7 @@ public class Operator implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tb_student_id")
+    @Column(name = "tb_operator_id")
     private Integer id;
 
     @NotBlank
